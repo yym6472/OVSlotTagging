@@ -1,0 +1,71 @@
+{
+    "random_seed": 1,
+    "numpy_seed": 1,
+    "pytorch_seed": 1,
+    "train_data_path": "./data/mr-splited/train/",
+    "validation_data_path": "./data/mr-splited/valid",
+    "test_data_path": "./data/mr-splited/test",
+    "dataset_reader": {
+        "type": "multi_file",
+        "token_indexers": {
+            "bert": {
+                "type": "bert-pretrained",
+                "pretrained_model": "/local/path/to/bert-large-uncased/",
+                "do_lowercase": false
+            }
+        },
+        "open_vocabulary_slots": [
+            "Restaurant_Name",
+            "Amenity",
+            "Location",
+            "Dish"
+        ]
+    },
+    "model": {
+        "type": "slot_tagging",
+        "bert_embedder": {
+            "pretrained_model": "/local/path/to/bert-large-uncased/",
+            "requires_grad": false,
+            "top_layer_only": false
+        },
+        "open_vocabulary_slots": [
+            "Restaurant_Name",
+            "Amenity",
+            "Location",
+            "Dish"
+        ],
+        "encoder": {
+            "type": "lstm",
+            "input_size": 1024,
+            "hidden_size": 128,
+            "bidirectional": true,
+            "batch_first": true
+        },
+        "use_crf": true,
+        "add_attack_noise": true,
+        "noise_norm": 2.5,
+        "noise_loss_prob": 0.5
+    },
+    "iterator": {
+        "type": "bucket",
+        "batch_size": 32,
+        "sorting_keys": [
+            [
+                "sentence",
+                "num_tokens"
+            ]
+        ]
+    },
+    "trainer": {
+        "num_epochs": 1000,
+        "optimizer": {
+            "type": "adam",
+            "lr": 0.001
+        },
+        "patience": 20,
+        "cuda_device": 1,
+        "grad_clipping": 5.0,
+        "validation_metric": "+f1-ov",
+        "num_serialized_models_to_keep": 0
+    }
+}
