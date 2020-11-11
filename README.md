@@ -1,5 +1,5 @@
 # OVSlotTagging
-Code for EMNLP 2020 paper: Adversarial Semantic Decoupling for Recognizing Open-Vocabulary Slots.
+Code for EMNLP 2020 paper: [Adversarial Semantic Decoupling for Recognizing Open-Vocabulary Slots](https://www.aclweb.org/anthology/2020.emnlp-main.490.pdf).
 
 ## Requirements
 ```
@@ -43,4 +43,21 @@ where `./outputs/SETTING/` should be the `output_dir` param same as that in the 
 ## Citation
 If you find the code useful, please consider citing our paper:
 ```
+@inproceedings{yan-etal-2020-adversarial,
+    title = "Adversarial Semantic Decoupling for Recognizing Open-Vocabulary Slots",
+    author = "Yan, Yuanmeng  and
+      He, Keqing  and
+      Xu, Hong  and
+      Liu, Sihong  and
+      Meng, Fanyu  and
+      Hu, Min  and
+      Xu, Weiran",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.emnlp-main.490",
+    pages = "6070--6075",
+}
 ```
